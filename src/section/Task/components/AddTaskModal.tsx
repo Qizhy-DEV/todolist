@@ -8,7 +8,6 @@ interface Props {
 }
 
 const AddTaskModal = ({ visible, onClose }: Props) => {
-  console.log(a);
   return (
     <Modal title="Add New Task" visible={visible} onClose={onClose}>
       <AddTaskForm />

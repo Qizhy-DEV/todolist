@@ -40,7 +40,7 @@ const AddNewModal = ({ title, visible, onClose }: Props) => {
   };
 
   return (
-    <Modal width={400} height={250} onClose={onClose} title={title} visible={visible}>
+    <Modal onClose={onClose} title={title} visible={visible}>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="w-full h-full flex flex-col items-end gap-2"
