@@ -19,13 +19,13 @@ const Filter = ({ currentFilter, setCurrentFilter, onAddTask }: Props) => {
         >
           <p
             style={{ color: currentFilter === 'all-tasks' ? 'blue' : '#999' }}
-            className="transition-all duration-500 text-[14px]"
+            className="transition-all duration-500 text-sm"
           >
             All Tasks
           </p>
           <p
             style={{ backgroundColor: currentFilter === 'all-tasks' ? 'blue' : '#999' }}
-            className="text-[12px] transition-all duration-500 flex items-center justify-center aspect-square rounded-full bg-[blue] text-[white] w-[20px]"
+            className="text-[12px] transition-all duration-500 flex items-center justify-center aspect-square rounded-full bg-blue-500 text-white w-5"
           >
             {tasks.length}
           </p>
@@ -36,13 +36,13 @@ const Filter = ({ currentFilter, setCurrentFilter, onAddTask }: Props) => {
         >
           <p
             style={{ color: currentFilter === 'completed-tasks' ? 'blue' : '#999' }}
-            className="transition-all duration-500 text-[14px]"
+            className="transition-all duration-500 text-sm"
           >
             Completed Tasks
           </p>
           <p
             style={{ backgroundColor: currentFilter === 'completed-tasks' ? 'blue' : '#999' }}
-            className="text-[12px] transition-all duration-500 flex items-center justify-center aspect-square rounded-full bg-[blue] text-[white] w-[20px]"
+            className="text-[12px] transition-all duration-500 flex items-center justify-center aspect-square rounded-full bg-blue-500 text-white w-5"
           >
             {tasks.filter(item => item.isCompleted).length}
           </p>
@@ -50,7 +50,7 @@ const Filter = ({ currentFilter, setCurrentFilter, onAddTask }: Props) => {
       </div>
       <button
         onClick={onAddTask}
-        className="text-[14px] font-medium text-[white] cursor-pointer bg-[#5dade2] px-4 py-2 rounded-md"
+        className="text-sm font-medium text-white cursor-pointer bg-blue-300 px-4 py-2 rounded-md"
       >
         Add New
       </button>

@@ -45,17 +45,15 @@ const Modal = ({ title, visible, onClose, children, className }: Props) => {
       <div
         ref={ref}
         className={cn(
-          'rounded-sm p-4 gap-2 flex flex-col bg-white w-lg shadow ',
+          'rounded-sm p-5 gap-2 flex flex-col bg-white w-lg shadow ',
           `animate-${animate}`
         )}
       >
-        <div className="w-full flex justify-between items-center">
-          <h3 className="text-[17px] font-medium">{title}</h3>
-          <button
-            onClick={onClose}
-            className="text-[18px] text-[#999] cursor-pointer fa-solid fa-xmark"
-          />
-        </div>
+        <button
+          onClick={onClose}
+          className="text-lg absolute right-5 top-5 text-gray-400 cursor-pointer fa-solid fa-xmark"
+        />
+        <h3 className="text-lg font-medium w-full">{title}</h3>
         <div>{children}</div>
       </div>
     </div>

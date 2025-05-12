@@ -7,7 +7,7 @@ import UserMenu from './components/UserMenu';
 
 const Header = () => {
   return (
-    <div className="flex items-center justify-between w-full h-[50px] shadow-md px-[1rem]">
+    <div className="flex items-center justify-between w-full h-[50px] shadow-md px-4">
       <Brand />
       <div className="flex items-center gap-4">
         <Nav />

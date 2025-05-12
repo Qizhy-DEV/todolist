@@ -16,8 +16,6 @@ const Task = () => {
 
   const [currentTask, setCurrentTask] = useState<TaskInterface>();
 
-  const [currentId, setCurrentId] = useState<string>();
-
   const [addTaskVisible, setAddTaskVisible] = useState(false);
 
   const [updateTaskVisible, setUpdateTaskVisible] = useState(false);
@@ -40,7 +38,7 @@ const Task = () => {
         task={currentTask}
       />
 
-      <div className="w-full h-screen px-[2%] py-[2%] gap-[1rem] flex flex-col">
+      <div className="w-full h-screen p-6 gap-4 flex flex-col">
         <Filter
           currentFilter={currentFilter}
           setCurrentFilter={setCurrentFilter}

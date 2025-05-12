@@ -47,13 +47,13 @@ const UpdateTaskForm = ({ task }: { task: Task | undefined }) => {
         render={({ field }) => (
           <input
             {...field}
-            className="w-full focus:outline-0 h-[40px] rounded-md border-[1px] border-[#dfdfdf] px-2 text-[14px]"
+            className="w-full focus:outline-0 h-10 rounded-md border-[1px] border-[#dfdfdf] px-2 text-sm"
             placeholder="Title"
           />
         )}
       />
       {errors.title && (
-        <span className="text-[12px] w-full text-[red] pl-1">{errors.title.message}</span>
+        <span className="text-[12px] w-full text-red-500 pl-1">{errors.title.message}</span>
       )}
       <Controller
         name="subtitle"
@@ -62,15 +62,15 @@ const UpdateTaskForm = ({ task }: { task: Task | undefined }) => {
         render={({ field }) => (
           <input
             {...field}
-            className="w-full focus:outline-0 h-[40px] rounded-md border-[1px] border-[#dfdfdf] px-2 text-[14px]"
+            className="w-full focus:outline-0 h-10 rounded-md border-[1px] border-[#dfdfdf] px-2 text-sm"
             placeholder="Subtitle"
           />
         )}
       />
       {errors.subtitle && (
-        <span className="text-[12px] w-full text-[red] pl-1">{errors.subtitle.message}</span>
+        <span className="text-[12px] w-full text-red-500 pl-1">{errors.subtitle.message}</span>
       )}
-      <button className="text-[14px] text-[white] bg-[#5dade2] px-4 py-2 rounded-md cursor-pointer">
+      <button className="text-sm text-white bg-blue-300 px-4 py-2 rounded-md cursor-pointer">
         Update
       </button>
     </form>

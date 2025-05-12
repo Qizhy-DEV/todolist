@@ -10,7 +10,7 @@ const Brand = () => {
         width={40}
         height={40}
       />
-      <span className="text-[20px] font-medium">Todolist</span>
+      <span className="text-xl font-medium">Todolist</span>
     </div>
   );
 };

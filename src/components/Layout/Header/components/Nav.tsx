@@ -22,7 +22,7 @@ const Nav = () => {
     },
   ];
   return (
-    <ul className="flex items-center translate-y-[2px] gap-4 text-[13px] font-medium text-[#2f2f2f]">
+    <ul className="flex items-center translate-y-1 gap-4 text-sm font-medium text-[#2f2f2f]">
       {navs.map((nav, index) => (
         <li key={nav.name + index}>
           <Link href={nav.route}>{nav.name}</Link>

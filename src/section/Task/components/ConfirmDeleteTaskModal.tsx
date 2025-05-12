@@ -21,19 +21,19 @@ const ConfirmDeleteTaskModal = ({ visible, onClose, task }: Props) => {
   return (
     <ConfirmModal title="Confirmation" visible={visible} onClose={onClose}>
       <div className="w-full h-full flex flex-col items-end gap-2">
-        <p className="w-full text-[14px]">Are you sure about delete this task?</p>
+        <p className="w-full text-sm">Are you sure about delete this task?</p>
         <div className="flex w-full justify-end gap-2">
           <button
             type="button"
             onClick={onClose}
-            className="text-[14px] text-[white] bg-[red] px-4 py-2 rounded-md cursor-pointer"
+            className="text-sm text-white bg-red-500 px-4 py-2 rounded-md cursor-pointer"
           >
             Cancel
           </button>
           <button
             onClick={handleDeleteTask}
             type="submit"
-            className="text-[14px] text-[white] bg-[#5dade2] px-4 py-2 rounded-md cursor-pointer"
+            className="text-sm text-white bg-blue-300 px-4 py-2 rounded-md cursor-pointer"
           >
             Confirm
           </button>
