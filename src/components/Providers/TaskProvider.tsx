@@ -26,32 +26,32 @@ const TaskProvider = ({ children }: { children: React.ReactNode }) => {
   const [tasks, setTasks] = useState<Task[]>(taskList);
 
   const addTask = (task: Task) => {
-    setTasks((prev) => [task, ...prev]);
+    setTasks(prev => [task, ...prev]);
   };
 
   const updateTask = (task: Task) => {
-    setTasks((prev) =>
-      prev.map((item) => {
+    setTasks(prev =>
+      prev.map(item => {
         if (item.id === task.id) {
           return task;
         }
         return item;
-      }),
+      })
     );
   };
 
   const removeTask = (id: string) => {
-    setTasks((prev) => prev.filter((item) => item.id !== id));
+    setTasks(prev => prev.filter(item => item.id !== id));
   };
 
   const toggleCompletion = (id: string) => {
-    setTasks((prev) =>
-      prev.map((item) => {
+    setTasks(prev =>
+      prev.map(item => {
         if (item.id === id) {
           return { ...item, isCompleted: !item.isCompleted };
         }
         return item;
-      }),
+      })
     );
   };
 

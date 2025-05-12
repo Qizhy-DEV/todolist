@@ -1,28 +1,26 @@
-import React, { useEffect, useState } from 'react';
-import { useTask } from '../../Providers/TaskProvider';
-import Modal from '..';
+import ConfirmModal from '@/components/common/ConfirmModal';
+import React from 'react';
+import { Task, useTask } from '@/components/Providers/TaskProvider';
 
 interface Props {
-  taskId: string | undefined;
   visible: boolean;
-  title: string;
-  subtitle: string;
   onClose: () => void;
+  task?: Task;
 }
 
-const DeleteModal = ({ title, visible, subtitle, onClose, taskId }: Props) => {
+const ConfirmDeleteTaskModal = ({ visible, onClose, task }: Props) => {
   const { removeTask } = useTask();
 
-  const onSubmit = () => {
-    if (!taskId) return;
-    removeTask(taskId);
-    onClose();
+  if (!task) return;
+
+  const handleDeleteTask = () => {
+    removeTask(task.id);
   };
 
   return (
-    <Modal onClose={onClose} title={title} visible={visible}>
+    <ConfirmModal title="Confirmation" visible={visible} onClose={onClose}>
       <div className="w-full h-full flex flex-col items-end gap-2">
-        <p className="w-full text-[14px]">{subtitle}</p>
+        <p className="w-full text-[14px]">Are you sure about delete this task?</p>
         <div className="flex w-full justify-end gap-2">
           <button
             type="button"
@@ -32,7 +30,7 @@ const DeleteModal = ({ title, visible, subtitle, onClose, taskId }: Props) => {
             Cancel
           </button>
           <button
-            onClick={onSubmit}
+            onClick={handleDeleteTask}
             type="submit"
             className="text-[14px] text-[white] bg-[#5dade2] px-4 py-2 rounded-md cursor-pointer"
           >
@@ -40,8 +38,8 @@ const DeleteModal = ({ title, visible, subtitle, onClose, taskId }: Props) => {
           </button>
         </div>
       </div>
-    </Modal>
+    </ConfirmModal>
   );
 };
 
-export default DeleteModal;
+export default ConfirmDeleteTaskModal;

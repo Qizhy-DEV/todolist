@@ -1,5 +1,4 @@
 import { useTask } from '@/components/Providers/TaskProvider';
-import modalManager from '@/utils/modalManager';
 import React from 'react';
 
 interface Props {
@@ -45,7 +44,7 @@ const Filter = ({ currentFilter, setCurrentFilter, onAddTask }: Props) => {
             style={{ backgroundColor: currentFilter === 'completed-tasks' ? 'blue' : '#999' }}
             className="text-[12px] transition-all duration-500 flex items-center justify-center aspect-square rounded-full bg-[blue] text-[white] w-[20px]"
           >
-            {tasks.filter((item) => item.isCompleted).length}
+            {tasks.filter(item => item.isCompleted).length}
           </p>
         </button>
       </div>

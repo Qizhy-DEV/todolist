@@ -1,6 +1,7 @@
 import { handleExpandOrCollapseForm } from '@/utils/utils';
 import React, { useEffect, useRef } from 'react';
-import Overlay from '../Overlay';
+import { cn } from '@/utils/cn';
+import { useClickOutside } from '@/composables/useClickOutside';
 
 interface Props {
   title?: string;
@@ -8,43 +9,50 @@ interface Props {
   onClose: () => void;
   className?: string;
   children: React.ReactNode;
-  width: number;
-  height: number;
+  // width?: number;
+  // height?: number;
 }
 
-const Modal = ({ title, visible, onClose, children, width, height }: Props) => {
-  const modalRef = useRef<HTMLDivElement | null>(null);
+const Modal = ({ title, visible, onClose, children, className }: Props) => {
+  const ref = useClickOutside<HTMLDivElement>({
+    onClickOutside: onClose,
+    enabled: visible,
+  });
+  // const modalRef = useRef<HTMLDivElement | null>(null);
 
-  useEffect(() => {
-    if (modalRef.current) {
-      handleExpandOrCollapseForm({
-        visible,
-        formRef: modalRef,
-        displayType: 'flex',
-        collapseHeight: `${height - 20}px`,
-        collapseWidth: `${width - 20}px`,
-        expandHeight: `${height}px`,
-        expandWidth: `${width}px`,
-      });
-    }
-  }, [visible]);
+  // useEffect(() => {
+  //   if (modalRef.current) {
+  //     handleExpandOrCollapseForm({
+  //       visible,
+  //       formRef: modalRef,
+  //       displayType: 'flex',
+  //     });
+  //   }
+  // }, [visible]);
+  if (!visible) {
+    return null;
+  }
 
   return (
     <>
-      <Overlay visible={visible} onClose={onClose} />
       <div
-        ref={modalRef}
-        className={`fixed flex-col rounded-md p-4 gap-2 hidden bg-[white] z-50 transition-all duration-500 top-[50%] left-[50%] translate-x-[-50%] translate-y-[-50%]`}
+        // ref={modalRef}
+        className={cn(
+          'fixed top-0 left-0 flex flex-col items-center justify-center w-full h-full ',
+          'bg-[rgba(0,0,0,0.4)] z-50 transition-all duration-500'
+        )}
       >
-        <div className="w-full flex justify-between items-center">
-          <h3 className="text-[17px] font-medium">{title}</h3>
-          <button
-            onClick={onClose}
-            className="absolute right-4 top-4 text-[18px] text-[#999] cursor-pointer fa-solid fa-xmark"
-          />
+        <div ref={ref} className={cn('rounded-sm px-4 py-2 gap-2 bg-white w-lg shadow')}>
+          <div className="w-full flex justify-between items-center">
+            <h3 className="text-[17px] font-medium">{title}</h3>
+            <button
+              onClick={onClose}
+              className="text-[18px] text-[#999] cursor-pointer fa-solid fa-xmark"
+            />
+          </div>
+          <div>{children}</div>
+          <div></div>
         </div>
-        <div>{children}</div>
-        <div></div>
       </div>
     </>
   );

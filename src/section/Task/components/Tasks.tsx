@@ -5,7 +5,7 @@ import React from 'react';
 interface Props {
   currentFilter: TaskFilter;
   onUpdateTask: (task: TaskInterface) => void;
-  onDeleteTask: (id: string) => void;
+  onDeleteTask: (task: TaskInterface) => void;
 }
 
 const Tasks = ({ currentFilter, onUpdateTask, onDeleteTask }: Props) => {

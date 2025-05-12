@@ -4,7 +4,7 @@ import React from 'react';
 interface Props {
   task: TaskInterface;
   onUpdateTask: (task: TaskInterface) => void;
-  onDeleteTask: (id: string) => void;
+  onDeleteTask: (task: TaskInterface) => void;
 }
 
 const Task = ({ task, onUpdateTask, onDeleteTask }: Props) => {
@@ -38,7 +38,7 @@ const Task = ({ task, onUpdateTask, onDeleteTask }: Props) => {
             <i className="fa-solid fa-pencil"></i>
           </button>
           <button
-            onClick={() => onDeleteTask(task.id)}
+            onClick={() => onDeleteTask(task)}
             className="w-[27px] cursor-pointer text-[white] text-[14px] aspect-square rounded-sm bg-[#ec7063]"
           >
             <i className="fa-solid fa-trash"></i>

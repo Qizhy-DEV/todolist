@@ -10,6 +10,8 @@ import TaskProvider, {
 import AddNewModal from '@/components/Modal/components/AddNewModal';
 import UpdateModal from '@/components/Modal/components/UpdateModal';
 import DeleteModal from '@/components/Modal/components/DeleteModal';
+import AddTaskModal from '@/section/Task/components/AddTaskModal';
+import ConfirmDeleteTaskModal from '@/section/Task/components/ConfirmDeleteTaskModal';
 
 const Task = () => {
   const [currentFilter, setCurrentFilter] = useState<TaskFilter>('all-tasks');
@@ -26,24 +28,32 @@ const Task = () => {
 
   return (
     <TaskProvider>
-      <AddNewModal
-        title="Add New Task"
-        visible={addTaskVisible}
-        onClose={() => setAddTaskVisible(false)}
-      />
+      {/*<AddNewModal*/}
+      {/*  title="Add New Task"*/}
+      {/*  visible={addTaskVisible}*/}
+      {/*  onClose={() => setAddTaskVisible(false)}*/}
+      {/*/>*/}
+      <AddTaskModal visible={addTaskVisible} onClose={() => setAddTaskVisible(false)} />
+
       <UpdateModal
         title="Update Task"
         visible={updateTaskVisible}
         currentTask={currentTask}
         onClose={() => setUpdateTaskVisible(false)}
       />
-      <DeleteModal
-        title="Confirmation"
-        subtitle="Are you sure about delete this task"
-        taskId={currentId}
-        onClose={() => setDeleteTaskVisible(false)}
+      {/*<DeleteModal*/}
+      {/*  title="Confirmation"*/}
+      {/*  subtitle="Are you sure about delete this task"*/}
+      {/*  taskId={currentId}*/}
+      {/*  onClose={() => setDeleteTaskVisible(false)}*/}
+      {/*  visible={deleteTaskVisible}*/}
+      {/*/>*/}
+      <ConfirmDeleteTaskModal
         visible={deleteTaskVisible}
+        onClose={() => setDeleteTaskVisible(false)}
+        task={currentTask}
       />
+
       <div className="w-full h-screen px-[2%] py-[2%] gap-[1rem] flex flex-col">
         <Filter
           currentFilter={currentFilter}
@@ -52,9 +62,12 @@ const Task = () => {
         />
         <Tasks
           currentFilter={currentFilter}
-          onDeleteTask={(id: string) => {
+          onDeleteTask={task => {
             setDeleteTaskVisible(true);
-            setCurrentId(id);
+            setCurrentId(task.id);
+
+            // For temp
+            setCurrentTask(task);
           }}
           onUpdateTask={(task: TaskInterface) => {
             setCurrentTask(task);

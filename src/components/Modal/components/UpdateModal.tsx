@@ -1,7 +1,7 @@
 import Modal from '@/components/Modal';
 import { FormValues, taskSchema } from '@/validattions/TaskSchema';
 import { yupResolver } from '@hookform/resolvers/yup';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { Controller, useForm } from 'react-hook-form';
 import { Task, useTask } from '../../Providers/TaskProvider';
 
@@ -48,7 +48,7 @@ const UpdateModal = ({ title, visible, onClose, currentTask }: Props) => {
   };
 
   return (
-    <Modal width={400} height={250} onClose={onClose} title={title} visible={visible}>
+    <Modal onClose={onClose} title={title} visible={visible}>
       <form
         onSubmit={handleSubmit(onSubmit)}
         className="w-full h-full flex flex-col items-end gap-2"
