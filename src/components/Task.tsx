@@ -1,0 +1,52 @@
+import { Task as TaskInterface, useTask } from '@/components/Providers/TaskProvider';
+import React from 'react';
+
+interface Props {
+  task: TaskInterface;
+  onUpdateTask: (task: TaskInterface) => void;
+  onDeleteTask: (id: string) => void;
+}
+
+const Task = ({ task, onUpdateTask, onDeleteTask }: Props) => {
+  const { toggleCompletion } = useTask();
+
+  return (
+    <div className="w-full flex flex-col px-[1rem] py-[1rem] border-[1px] border-[#efefef] gap-[0.5rem] bg-[white] shadow-lg rounded-lg">
+      <div className="flex items-center justify-between border-b-[1px] border-[#cdcdcd] pb-1">
+        <div className="flex flex-col gap-1 w-[80%]">
+          <h3 className="text-[15px]">{task.title}</h3>
+          <p className="text-[13px]">{task.subtitle}</p>
+        </div>
+        <button
+          onClick={() => toggleCompletion(task.id)}
+          style={{ backgroundColor: task.isCompleted ? '#5dade2' : '#e8e8e8' }}
+          className="cursor-pointer transition-all duration-500 w-[30px] aspect-square rounded-full"
+        >
+          <i
+            style={{ opacity: task.isCompleted ? 1 : 0 }}
+            className="text-[white] transition-all duration-500 fa-solid fa-check"
+          ></i>
+        </button>
+      </div>
+      <div className="flex items-center justify-between">
+        <p className="text-[14px]">Today</p>
+        <div className="flex items-center gap-2">
+          <button
+            onClick={() => onUpdateTask(task)}
+            className="w-[27px] cursor-pointer text-[white] text-[14px] aspect-square rounded-sm bg-[#5dade2]"
+          >
+            <i className="fa-solid fa-pencil"></i>
+          </button>
+          <button
+            onClick={() => onDeleteTask(task.id)}
+            className="w-[27px] cursor-pointer text-[white] text-[14px] aspect-square rounded-sm bg-[#ec7063]"
+          >
+            <i className="fa-solid fa-trash"></i>
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default Task;
