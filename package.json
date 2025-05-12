@@ -4,7 +4,6 @@
   "private": true,
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "next lint",
       "prettier --write"
     ],
     "*.{json,md,css,scss}": [

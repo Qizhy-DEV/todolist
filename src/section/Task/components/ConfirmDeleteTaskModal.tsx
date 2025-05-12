@@ -15,6 +15,7 @@ const ConfirmDeleteTaskModal = ({ visible, onClose, task }: Props) => {
 
   const handleDeleteTask = () => {
     removeTask(task.id);
+    onClose();
   };
 
   return (
