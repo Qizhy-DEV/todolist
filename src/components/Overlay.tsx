@@ -1,5 +1,4 @@
 import React, { useCallback, useEffect, useRef, useState } from 'react';
-import modalManager from '@/utils/modalManager';
 
 export interface Props {
   visible: boolean;
