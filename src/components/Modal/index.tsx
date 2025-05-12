@@ -42,7 +42,7 @@ const Modal = ({ title, visible, onClose, children, className }: Props) => {
           'bg-[rgba(0,0,0,0.4)] z-50 transition-all duration-500'
         )}
       >
-        <div ref={ref} className={cn('rounded-sm px-4 py-2 gap-2 bg-white w-lg shadow')}>
+        <div ref={ref} className={cn('rounded-sm px-4 py-2 gap-2 bg-white w-lg shadow', className)}>
           <div className="w-full flex justify-between items-center">
             <h3 className="text-[17px] font-medium">{title}</h3>
             <button
